@@ -11,6 +11,9 @@ nenhum programa gratuito que realizasse essa função decidi criar um. O program
 ## Instalação 
 
 -- Baixar o arquivo
+
 -- Descompacta-lo
+
 -- Ativar a biblioteca exif no php.ini 
+
 -- (opcional) Modificar a quantidade de entrada de arquivos necessários no php.ini 
