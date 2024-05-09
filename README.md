@@ -1,19 +1,20 @@
+
 # Datas Exif
+Resumo:
 
-** Programa foi construido com o intuito de resolver um problema interno existente na prefeitura de Umurama
+O projeto "Datas Exif" foi desenvolvido para atender a uma necessidade interna na prefeitura de Umurama. Um setor específico carecia de uma solução que permitisse aos contribuintes visualizarem fotos dos locais juntamente com a data em que foram capturadas. Como estagiário de infraestrutura de TI na Diretoria de TI da prefeitura, fui designado para resolver esse problema. Não encontrando nenhuma solução gratuita disponível, optei por desenvolver uma. Embora o programa esteja em uso, não pude dedicar tempo para atualizá-lo devido a outras demandas.
 
-Um dos setores carecia de um programa para mostrar aos contribuintes as fotos dos locais e a data em que as mesmas foram tiradas
-Na época eu era da Diretoria de TI da prefeitura atuando como estagiario na infra de TI e fui requisitado para resolver esse chamado, como não havia 
-nenhum programa gratuito que realizasse essa função decidi criar um. O programa esta sendo utilizado entretanto pela falta de tempo nunca consegui atualiza-lo por falta de tempo.
+## Funcionalidades
+O programa analisa metadados de fotos e insere automaticamente a data de captura no canto superior esquerdo das imagens.
 
-** O programa pega varias fotos e a partir dos metadados das mesmas inseri no canto esquerdo superior a data em que a foto foi tirar
+### Instalação
+Baixe o arquivo.
+Descompacte-o.
+Ative a extensão Exif no arquivo php.ini.
+(Opcional) Modifique as configurações no php.ini para ajustar a quantidade de arquivos que podem ser processados simultaneamente.
+Como Usar
+[Descreva aqui como utilizar o programa após a instalação.]
 
-## Instalação 
+Contribuição
+Contribuições são bem-vindas! Abra uma issue para discutir as mudanças propostas ou envie um pull request.
 
--- Baixar o arquivo
-
--- Descompacta-lo
-
--- Ativar a biblioteca exif no php.ini 
-
--- (opcional) Modificar a quantidade de entrada de arquivos necessários no php.ini 
