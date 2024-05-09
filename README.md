@@ -12,8 +12,6 @@ Baixe o arquivo.
 Descompacte-o.
 Ative a extensão Exif no arquivo php.ini.
 (Opcional) Modifique as configurações no php.ini para ajustar a quantidade de arquivos que podem ser processados simultaneamente.
-Como Usar
-[Descreva aqui como utilizar o programa após a instalação.]
 
 Contribuição
 Contribuições são bem-vindas! Abra uma issue para discutir as mudanças propostas ou envie um pull request.
