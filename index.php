@@ -14,10 +14,10 @@
     <div class="container">
 
     <?php
-    // esqueci pq coloquei isso aqui, mas se ta ai tem proposito
+   
     ob_start();
 
-    // Função para limpar o cache
+    
     function clearCache()
     {
         header("Cache-Control: no-cache, no-store, must-revalidate");
@@ -25,7 +25,7 @@
         header("Expires: 0");
     }
 
-    // Limpar o cache ao recarregar a página
+   
     clearCache();
 
     function createDirectory($directory)
@@ -36,53 +36,53 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        // Pasta para salvar as fotos
+     
         $pasta_fotos = "fotos_com_data/";
 
-        // Verificar se a pasta existe e tem permissão de escrita
+  
         createDirectory($pasta_fotos);
 
-        // Verificar se foram enviadas fotos
+      
         if (empty($_FILES["imagens"]["name"][0])) {
             echo '<div class="alert alert-warning">Nenhuma foto foi enviada.</div>';
             exit;
         }
 
-        // Array para armazenar nomes de arquivos bem-sucedidos
+   
         $arquivos_sucesso = array();
 
-        // Loop através das imagens
+    
         foreach ($_FILES["imagens"]["tmp_name"] as $key => $tmp_name) {
-            // Verificar se é realmente uma imagem
+   
             $mime_type = mime_content_type($tmp_name);
             if (strpos($mime_type, "image/") === 0) {
-                // Obter a data e hora da foto
+               
                 $exif = exif_read_data($tmp_name);
                 $data_hora = isset($exif["DateTimeOriginal"]) ? $exif["DateTimeOriginal"] : date("Y-m-d H:i:s");
 
-                // Obter o nome original do arquivo e a extensão
+             
                 $nome_original = pathinfo($_FILES["imagens"]["name"][$key], PATHINFO_FILENAME);
                 $extensao = pathinfo($_FILES["imagens"]["name"][$key], PATHINFO_EXTENSION);
 
-                // Criar um nome de arquivo único
+             
                 $nome_arquivo = $pasta_fotos . uniqid() . "_" . $nome_original . "." . $extensao;
 
-                // Copiar e renomear a imagem
+               
                 move_uploaded_file($tmp_name, $nome_arquivo);
 
-                // Carregar a imagem
+             
                 $imagem = imagecreatefromjpeg($nome_arquivo);
 
                 // Definir algumas cores
                 $cor_fundo = imagecolorallocate($imagem, 255, 255, 255);
                 $cor_texto = imagecolorallocate($imagem, 255, 255, 255);
 
-                // Definir a fonte e o tamanho do texto
+                
                 $fonte = "./arial/arial.ttf";
                 $proporcao_tamanho = 0.05 * min(imagesx($imagem), imagesy($imagem));
                 $tamanho_fonte = max(10, floor($proporcao_tamanho));
 
-                // Verificar a largura da imagem para definir a posição do texto
+                
                 $largura_imagem = imagesx($imagem);
                 if ($largura_imagem >= 600) {
                     $posicao_x = 20;
@@ -96,16 +96,16 @@
                 $posicao_x = 10;
                 $posicao_y = 35;
 
-                // Escrever a data e hora na imagem
+
                 imagettftext($imagem, $tamanho_fonte, 0, $posicao_x, $posicao_y, $cor_texto, $fonte, $data_hora);
 
-                // Salvar a imagem modificada
+               
                 imagejpeg($imagem, $nome_arquivo);
 
-                // Liberar memória
+              
                 imagedestroy($imagem);
 
-                // Armazenar o nome do arquivo bem-sucedido
+               
                 $arquivos_sucesso[] = $nome_arquivo;
             } else {
                 echo '<div class="alert alert-warning">Arquivo inválido: ' . $_FILES["imagens"]["name"][$key] . '</div>';
