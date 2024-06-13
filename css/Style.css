@@ -1,13 +1,18 @@
 body {
     margin: 0px;
-    background-image: url(https://img.freepik.com/fotos-gratis/fundo-de-tecnologia-do-circuito-da-placa-mae-em-gradiente-azul_53876-124645.jpg?w=2000);
+    background-image: url(https://umuarama.pr.gov.br/files/Noticias/capa/prefeitura-umuarama-1-1670959668.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.container{
+    width: 100vh;
+    
+}
+
 .form {
-    margin-top: 40px;
-    width: 80vw;
-    height: 80vh;
+    margin-top: 70px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -18,3 +23,8 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
+
+.imgpref{
+    width: 150px;
+    height: 150px;
+}

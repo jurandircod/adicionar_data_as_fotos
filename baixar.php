@@ -11,15 +11,15 @@
     <div class="container">
 
         <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <h5 class="navbar-brand" style="text-decoration: white;">Baixar Fotos</h5>
+            <div class="container-fluid">                   
+            <h3 class="navbar-brand" style="text-decoration: white;">Fotos disponíveis</h3>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a href="?baixar" class="btn btn-primary mx-1">Baixar Todas as Fotos</a>
-                        <a href="?excluir" class="btn btn-danger mx-1">Excluir todas as fotos</a>
+                        <a href="?baixar&prefix=<?php echo $_GET['prefix']; ?> " class="btn btn-primary mx-1">Baixar Todas as Fotos</a>
+                        
                         <a href="index.php" class="btn btn-info mx-1">Enviar Mais Fotos</a>
                     </div>
                 </div>
@@ -28,10 +28,16 @@
 
 
         <?php
+        $prefix = "";
+        if (isset($_GET['prefix'])){
+            $prefix = $_GET['prefix'];
+
+        }
+
         function deleteDirectory($directory)
         {
             if (file_exists($directory)) {
-                $files = glob($directory . '/*');
+                $files = glob($directory . '/');
                 foreach ($files as $file) {
                     if (is_file($file)) {
                         unlink($file);
@@ -51,7 +57,7 @@
         }
 
         // Listar todas as fotos
-        $fotos = glob($pasta_fotos . "*.*");
+        $fotos = glob($pasta_fotos . $prefix . "*.*");
 
         if (empty($fotos)) {
             echo '<div class="alert alert-warning mt-3">Nenhuma foto encontrada.</div>';
@@ -97,6 +103,7 @@
                 foreach ($fotos as $foto) {
                     unlink($foto);
                 }
+            
             } else {
                 echo '<div class="alert alert-danger">Erro ao criar arquivo ZIP.</div>';
             }
@@ -104,8 +111,7 @@
 
         // Verificar se a ação de baixar todas as fotos foi acionada
         if (isset($_GET['baixar'])) {
-            baixarTodasFotos($fotos);
-
+            baixarTodasFotos($fotos);    
             exit;
         }
 
@@ -118,7 +124,7 @@
 
         ?>
 
-        <h3>Fotos Disponíveis:</h3>
+        
 
 
         <ul class="list-group">

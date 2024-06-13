@@ -2,3 +2,18 @@
     border-radius: 10px;
     background-color: cadetblue;
 }
+
+body{
+    background-image: url(https://umuarama.pr.gov.br/files/Noticias/capa/prefeitura-umuarama-1-1670959668.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h3{
+    color: white;
+    
+}
+
+h5{
+    color: white;
+}
